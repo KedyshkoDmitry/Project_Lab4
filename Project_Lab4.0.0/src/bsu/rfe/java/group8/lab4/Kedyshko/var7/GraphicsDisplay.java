@@ -145,13 +145,13 @@ public class GraphicsDisplay extends JPanel
         GeneralPath graphics = new GeneralPath();
         for (int i=0; i<graphicsData.length; i++)
         {
-            Point2D.Double point = xyToPoint(graphicsData[i][0],
-                    Math.abs(graphicsData[i][1]));
+            Point2D.Double point = xyToPoint(graphicsData[i][0], Math.abs(graphicsData[i][1]));
             if (i>0)
             {
                 graphics.lineTo(point.getX(), Math.abs(point.getY()));
             }
-            else {
+            else
+                {
                 graphics.moveTo(point.getX(), Math.abs(point.getY()));
             }
         }
@@ -167,7 +167,6 @@ public class GraphicsDisplay extends JPanel
             double value = point[1];
             int temp = (int)value;
             int num = 1;
-            System.out.println(temp);
             while(temp>=0)
             {
                 temp -= num;
@@ -177,7 +176,6 @@ public class GraphicsDisplay extends JPanel
                     check = true;
                 }
             }
-
             if (check)
             {
                 canvas.setColor(Color.GREEN);
@@ -224,6 +222,10 @@ public class GraphicsDisplay extends JPanel
             canvas.drawString("y", (float)labelPos.getX() + 10, (float)(labelPos.getY() - bounds.getY()));
         }
 
+        Point2D.Double labelPosX = xyToPoint(0, 0);
+        Point2D.Double labelPosY = xyToPoint(0, 0);
+        canvas.drawString("0", (float)labelPosX.getX(),(float)labelPosY.getY());
+
         if (minY<=0.0 && maxY>=0.0)
         {
             canvas.draw(new Line2D.Double(xyToPoint(minX, 0), xyToPoint(maxX, 0)));
@@ -239,7 +241,6 @@ public class GraphicsDisplay extends JPanel
             Point2D.Double labelPos = xyToPoint(maxX, 0);
             canvas.drawString("x", (float) (labelPos.getX() - bounds.getWidth() - 10), (float) (labelPos.getY() + bounds.getY()));
         }
-
     }
 
     // ПРЕОБРАЗОВАНИЕ КООРДИНАТ
